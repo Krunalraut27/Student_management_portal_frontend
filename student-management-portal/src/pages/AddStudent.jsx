@@ -1,32 +1,22 @@
-import {useState}
+import {useState} from "react"
 
-from "react"
-
-import {addStudent} from "../services/StudentService"
+import {addStudent} from "../services/studentService"
 
 function AddStudent(){
 
-const [student,setStudent]=
-
-useState({
+const [student,setStudent]= useState({
 
 name:"",
+
 email:"",
+
 age:""
 
 })
 
 const handleChange=(e)=>{
 
-setStudent({
-
-...student,
-
-[e.target.name]:
-
-e.target.value
-
-})
+setStudent({...student,[e.target.name]:e.target.value})
 
 }
 
@@ -36,11 +26,15 @@ e.preventDefault()
 
 addStudent(student)
 
-.then(()=>{
+.then(res=>{
 
-alert("Saved")
+alert("Student added successfully")
+
+setStudent({name:"",email:"",age:""})
 
 })
+
+.catch(err=>console.log(err))
 
 }
 
@@ -48,61 +42,77 @@ return(
 
 <div>
 
-<h1 className="text-2xl mb-5">
+<h1 className="text-2xl font-bold mb-4">Add Student</h1>
 
-Add Student
+<form onSubmit={handleSubmit} className="space-y-4">
 
-</h1>
+<div>
 
-<form
-
-onSubmit={handleSubmit}
-
-className="bg-white p-5 shadow">
+<label className="block mb-1">Name</label>
 
 <input
+
+type="text"
 
 name="name"
 
-placeholder="Name"
+value={student.name}
 
 onChange={handleChange}
 
-className="border p-2 w-full mb-3"
+className="w-full p-2 border rounded"
+
+required
 
 />
 
+</div>
+
+<div>
+
+<label className="block mb-1">Email</label>
+
 <input
+
+type="email"
 
 name="email"
 
-placeholder="Email"
+value={student.email}
 
 onChange={handleChange}
 
-className="border p-2 w-full mb-3"
+className="w-full p-2 border rounded"
+
+required
 
 />
+
+</div>
+
+<div>
+
+<label className="block mb-1">Age</label>
 
 <input
 
+type="number"
+
 name="age"
 
-placeholder="Age"
+value={student.age}
 
 onChange={handleChange}
 
-className="border p-2 w-full mb-3"
+className="w-full p-2 border rounded"
+
+required
 
 />
 
-<button
+</div>
 
-className="bg-blue-600 text-white px-4 py-2">
-
-Save
-
-</button>
+<button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded">Add Student</button>
 
 </form>
 

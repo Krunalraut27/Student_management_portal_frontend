@@ -1,12 +1,10 @@
-import {useEffect,useState}
-
-from "react"
+import {useEffect,useState} from "react"
 
 import Table from "../components/Table"
 
-import {getStudents} from "../services/StudentService"
+import {getStudents} from "../services/studentService"
 
-function Students(){
+function Student(){
 
 const [students,setStudents]=useState([])
 
@@ -20,23 +18,17 @@ setStudents(res.data)
 
 })
 
+.catch(err=>console.log(err))
+
 },[])
 
 return(
 
 <div>
 
-<h1 className="text-2xl mb-5">
+<h1 className="text-2xl font-bold mb-4">Students</h1>
 
-Students
-
-</h1>
-
-<Table
-
-data={students}
-
-/>
+<Table data={students}/>
 
 </div>
 
@@ -44,4 +36,4 @@ data={students}
 
 }
 
-export default Students
+export default Student

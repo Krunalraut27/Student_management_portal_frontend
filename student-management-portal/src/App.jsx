@@ -2,9 +2,9 @@ import React from "react"
 
 import {BrowserRouter,Routes,Route} from "react-router-dom"
 
-import Dashboard from "./Pages/Dashboard";
-import Students from "./pages/Students";
-import AddStudent from "./Pages/AddStudent";
+import Dashboard from "./pages/Dashboard";
+import Student from "./pages/Student";
+import AddStudent from "./pages/AddStudent";
 
 import MainLayout from "./layouts/MainLayout"
 
@@ -16,7 +16,7 @@ return(
 
 <MainLayout>
 
-{/* <Routes>
+<Routes>
 
 <Route
 
@@ -30,7 +30,7 @@ element={<Dashboard/>}
 
 path="/students"
 
-element={<Students/>}
+element={<Student/>}
 
 />
 
@@ -42,7 +42,7 @@ element={<AddStudent/>}
 
 />
 
-</Routes> */}
+</Routes>
 
 </MainLayout>
 

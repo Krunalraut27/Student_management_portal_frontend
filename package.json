@@ -1,4 +1,10 @@
 {
+  "scripts": {
+    "start": "cd student-management-portal && npm start",
+    "dev": "cd student-management-portal && npm run dev",
+    "build": "cd student-management-portal && npm run build",
+    "preview": "cd student-management-portal && npm run preview"
+  },
   "dependencies": {
     "axios": "^1.14.0",
     "react-router-dom": "^7.13.2"
