@@ -1,8 +1,9 @@
 import api from "./api"
+import axios from "axios"
 
 export const getStudents=()=>{
 
-return api.get("/students")
+return axios.get("http://localhost:8080/getAllStudents")
 
 }
 
@@ -10,10 +11,22 @@ export const addStudent=(data)=>{
 
 return api.post(
 
-"/students",
+"/registerStudent",
 
 data
 
 )
+
+}
+
+export const updateStudent=(id, data)=>{
+
+return api.put(`/updateStudent/${id}`, data)
+
+}
+
+export const deleteStudent=(id)=>{
+
+return api.delete(`/students/${id}`)
 
 }

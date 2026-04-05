@@ -3,7 +3,7 @@ import {useNavigate} from "react-router-dom"
 
 import Table from "../components/Table"
 
-import {getStudents} from "../services/studentService"
+import {getStudents, deleteStudent} from "../services/studentService"
 
 function Student(){
 
@@ -11,10 +11,13 @@ const [students,setStudents]=useState([])
 const navigate = useNavigate()
 
 const columns = [
-  { key: 'id', label: 'ID' },
-  { key: 'name', label: 'Name' },
+  { key: 'srNo', label: 'Sr No' },
+  { key: 'firstName', label: 'First Name' },
+  { key: 'lastName', label: 'Last Name' },
+  { key: 'courseName', label: 'Course Name' },
   { key: 'email', label: 'Email' },
-  { key: 'age', label: 'Age' }
+  { key: 'phone', label: 'Phone Number' },
+  { key: 'actions', label: 'Actions' }
 ]
 
 useEffect(()=>{
@@ -22,6 +25,8 @@ useEffect(()=>{
 getStudents()
 
 .then(res=>{
+
+console.log('API Response:', res.data);
 
 setStudents(res.data)
 
@@ -33,6 +38,21 @@ setStudents(res.data)
 
 const handleAddStudent = () => {
   navigate("/add-student")
+}
+
+const handleEdit = (student) => {
+  navigate("/add-student", { state: { student } })
+}
+
+const handleDelete = (student) => {
+  if (window.confirm(`Are you sure you want to delete ${student.name}?`)) {
+    deleteStudent(student.id)
+      .then(() => {
+        // Refresh the list after deletion
+        getStudents().then(res => setStudents(res.data)).catch(err => console.log(err))
+      })
+      .catch(err => console.log(err))
+  }
 }
 
 return(
@@ -49,7 +69,7 @@ return(
   </button>
 </div>
 
-<Table data={students} columns={columns}/>
+<Table data={students} columns={columns} onEdit={handleEdit} onDelete={handleDelete}/>
 
 </div>
 
