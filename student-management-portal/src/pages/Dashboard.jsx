@@ -1,18 +1,16 @@
-function Dashboard(){
+function Dashboard() {
 
-return(
+    return (
 
-<div>
+        <div>
 
-<h1 className="text-2xl font-bold">
+            <h1 className="text-2xl font-bold">
+                Home
+            </h1>
 
-Home
+        </div>
 
-</h1>
-
-</div>
-
-)
+    )
 
 }
 

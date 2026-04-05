@@ -5,7 +5,10 @@ import {BrowserRouter,Routes,Route} from "react-router-dom"
 import Dashboard from "./pages/Dashboard";
 import Student from "./pages/Student";
 import AddStudent from "./pages/AddStudent";
-
+import AddNotes from "./pages/AddNotes";
+import Notes from "./pages/Notes";
+import Course from "./pages/Course";
+import AddCourse from "./pages/AddCourse";
 import MainLayout from "./layouts/MainLayout"
 
 function App(){
@@ -39,6 +42,38 @@ element={<Student/>}
 path="/add-student"
 
 element={<AddStudent/>}
+
+/>
+
+<Route
+
+path="/notes"
+
+element={<Notes/>}
+
+/>
+
+<Route
+
+path="/add-notes"
+
+element={<AddNotes/>}
+
+/>
+
+<Route
+
+path="/courses"
+
+element={<Course/>}
+
+/>
+
+<Route
+
+path="/add-course"
+
+element={<AddCourse/>}
 
 />
 

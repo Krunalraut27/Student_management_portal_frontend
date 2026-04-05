@@ -1,67 +1,24 @@
-function Table({data}){
-
-return(
-
-<table className="w-full bg-white shadow">
-
-<thead>
-
-<tr className="bg-gray-200">
-
-<th className="p-3">ID</th>
-
-<th>Name</th>
-
-<th>Email</th>
-
-<th>Age</th>
-
-</tr>
-
-</thead>
-
-<tbody>
-
-{data.map(student=>(
-
-<tr key={student.id}
-
-className="border">
-
-<td className="p-2">
-
-{student.id}
-
-</td>
-
-<td>
-
-{student.name}
-
-</td>
-
-<td>
-
-{student.email}
-
-</td>
-
-<td>
-
-{student.age}
-
-</td>
-
-</tr>
-
-))}
-
-</tbody>
-
-</table>
-
-)
-
+function Table({ data, columns }) {
+  return (
+    <table className="w-full bg-white shadow">
+      <thead>
+        <tr className="bg-gray-200">
+          {columns.map(col => (
+            <th key={col.key} className="p-3">{col.label}</th>
+          ))}
+        </tr>
+      </thead>
+      <tbody>
+        {data.map(item => (
+          <tr key={item.id} className="border">
+            {columns.map(col => (
+              <td key={col.key} className="p-2">{item[col.key]}</td>
+            ))}
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  );
 }
 
 export default Table
